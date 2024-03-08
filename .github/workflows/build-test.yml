@@ -18,7 +18,6 @@ jobs:
       uses: actions/setup-go@v4
       with:
         go-version: '1.21'
-        cache: false
 
     - run: cd gcp/project/test && go mod init project_test.go; go mod tidy
 
@@ -27,6 +26,7 @@ jobs:
       with:
         version: v1.54
         working-directory: gcp/project/test
+        skip-pkg-cache: true
 
     - name: Check documentation
       uses: terraform-docs/gh-actions@v1.0.0
