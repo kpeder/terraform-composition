@@ -30,7 +30,7 @@ jobs:
       with:
         fail-on-diff: true
         output-method: print
-        working-dir: .,fixtures/example1
+        working-dir: gcp/project
 
     - name: Test Project
-      run: make test
+      run: make gcp_lint
