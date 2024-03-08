@@ -1,0 +1,36 @@
+name: 'Terraform Build and Test'
+
+on:
+  push:
+    branches: [ 'main' ]
+  pull_request:
+    branches: [ 'main' ]
+
+jobs:
+
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout Project
+      uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.21'
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: '1.5.7'
+        terraform_wrapper: false
+
+    - name: Check documentation
+      uses: terraform-docs/gh-actions@v1.0.0
+      with:
+        fail-on-diff: true
+        output-method: print
+        working-dir: .,fixtures/example1
+
+    - name: Test Project
+      run: make test
