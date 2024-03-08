@@ -25,6 +25,7 @@ jobs:
       uses: golangci/golangci-lint-action@v4
       with:
         version: v1.54
+        working-directory: gcp/project/test
 
     - name: Check documentation
       uses: terraform-docs/gh-actions@v1.0.0
