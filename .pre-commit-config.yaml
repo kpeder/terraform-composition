@@ -12,9 +12,9 @@ repos:
       - id: terraform_fmt
       - id: terraform_docs
         args:
-          - markdown . --recursive --output-file README.md
+          - markdown --output-file README.md gcp/project
           - --hook-config=--add-to-existing-file=true
-          - --hook-config=--create-file-if-not-exist=false
+          - --hook-config=--create-file-if-not-exist=true
   - repo: https://github.com/dnephin/pre-commit-golang
     rev: v0.5.1
     hooks:
