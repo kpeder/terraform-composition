@@ -1,8 +1,26 @@
 locals {
-  env      = yamldecode(file("../env.yaml"))
-  inputs   = yamldecode(file("./inputs.yaml"))
-  gcp      = fileexists("../local.gcp.yaml") ? yamldecode(file("../local.gcp.yaml")) : yamldecode(file("../gcp.yaml"))
-  versions = yamldecode(file("../versions.yaml"))
+  env    = yamldecode(file("../env.yaml"))
+  inputs = yamldecode(file("./inputs.yaml"))
+  gcp    = fileexists("../local.gcp.yaml") ? yamldecode(file("../local.gcp.yaml")) : yamldecode(file("../gcp.yaml"))
+}
+
+terraform {
+  required_version = "~> 1.5.0"
+
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 4.84.0"
+    }
+    google-beta = {
+      source  = "hashicorp/google-beta"
+      version = "~> 4.84.0"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.5.0"
+    }
+  }
 }
 
 data "google_storage_bucket" "state" {

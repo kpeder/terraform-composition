@@ -1,5 +1,5 @@
 ---
 golang_runtime_version: "1.21"
-google_provider_version: "4.8"
+google_provider_version: "4.84"
 terraform_binary_version: "1.5"
 terraform_install_version: "1.5.7"
