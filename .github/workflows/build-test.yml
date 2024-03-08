@@ -19,11 +19,12 @@ jobs:
       with:
         go-version: '1.21'
 
-    - name: Set up Terraform
-      uses: hashicorp/setup-terraform@v2
+    - run: cd gcp/project/test && go mod init project_test.go; go mod tidy
+
+    - name: golangci-lint
+      uses: golangci/golangci-lint-action@v4
       with:
-        terraform_version: '1.5.7'
-        terraform_wrapper: false
+        version: v1.54
 
     - name: Check documentation
       uses: terraform-docs/gh-actions@v1.0.0
@@ -31,6 +32,3 @@ jobs:
         fail-on-diff: true
         output-method: print
         working-dir: gcp/project
-
-    - name: Test Project
-      run: make gcp_lint
