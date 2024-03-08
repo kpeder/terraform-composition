@@ -48,8 +48,7 @@ gcp_install:
 
 .PHONY: gcp_lint
 
-gcp_lint:
-	@cd gcp/project/test && go mod init project_test.go; go mod tidy
+gcp_lint: gcp_configure gcp_init
 	@cd gcp/project/test && golangci-lint run --print-linter-name --verbose project_test.go
 
 .PHONY: gcp_plan
