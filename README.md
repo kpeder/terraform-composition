@@ -7,12 +7,12 @@ This repository uses architecture decision records to record design decisions ab
 The ADR index is available [here](./docs/decisions/index.md).
 
 ### Requirements
-Tested on Go version 1.21 on Ubuntu Linux.
+Tested on Go version 1.21, 1.22 on Ubuntu Linux.
 
 Uses installed packages:
 ```
 gcloud
-golangci-lint
+golangci-lint v2
 make
 pre-commit
 terraform
@@ -31,7 +31,7 @@ terragrunt
 ### Deployment
 Automated installation configuration, and deployment steps are managed using Makefile targets. Use ```make help``` for a list of configured targets:
 ```
-$ make help 
+$ make help
 make <target>
 
 Targets:

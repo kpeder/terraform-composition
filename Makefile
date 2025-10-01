@@ -46,7 +46,7 @@ gcp_install:
 
 .PHONY: gcp_lint
 gcp_lint: gcp_configure gcp_init
-	@cd gcp/project/test && golangci-lint run --print-linter-name --verbose project_test.go
+	@cd gcp/project/test && golangci-lint run --output.text.print-linter-name --verbose project_test.go
 
 .PHONY: gcp_plan
 gcp_plan: gcp_configure gcp_init
@@ -55,3 +55,7 @@ gcp_plan: gcp_configure gcp_init
 .PHONY: gcp_test
 gcp_test: gcp_configure gcp_init
 	@cd gcp/project/test && go test -v -destroy
+
+.PHONY: gcp_tf_test
+gcp_tf_test: gcp_configure gcp_init
+	@cd gcp/project && terraform test
