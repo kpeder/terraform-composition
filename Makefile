@@ -24,7 +24,7 @@ pre-commit:
 .PHONY: gcp_clean
 gcp_clean:
 	@cd gcp/project && rm -rf .terraform *.tfstate* .terraform.lock.hcl
-	@cd gcp/project/test && rm -f go.mod go.sum
+	@cd gcp/project/test && rm -f go.mod go.sum && go clean -modcache
 
 .PHONY: gcp_configure
 gcp_configure:
@@ -37,7 +37,7 @@ gcp_deploy: gcp_configure gcp_init
 .PHONY: gcp_init
 gcp_init: gcp_configure
 	@cd gcp/project && terraform init
-	@cd gcp/project/test && go mod init project_test.go; go mod tidy
+	@cd gcp/project/test && cp mod.tpl go.mod && go mod init project_test.go; go mod tidy
 
 .PHONY: gcp_install
 gcp_install:
