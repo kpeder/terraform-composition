@@ -37,7 +37,7 @@ gcp_deploy: gcp_configure gcp_init
 .PHONY: gcp_init
 gcp_init: gcp_configure
 	@cd gcp/project && terraform init
-	@cd gcp/project/test && cp mod.tpl go.mod && go mod init project_test.go && go mod tidy
+	@cd gcp/project/test && cp mod.tpl go.mod && go mod tidy
 
 .PHONY: gcp_install
 gcp_install:
