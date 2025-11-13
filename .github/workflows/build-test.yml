@@ -19,7 +19,8 @@ jobs:
       with:
         go-version: '1.21'
 
-    - run: make gcp_clean && make gcp_init
+    - run: make gcp_clean
+    - run: cd gcp/project/test && cp mod.tpl go.mod && go mod tidy
 
     - name: golangci-lint
       uses: golangci/golangci-lint-action@v4
