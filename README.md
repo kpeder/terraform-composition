@@ -17,7 +17,7 @@ make
 pre-commit
 terraform
 terraform-docs
-terragrunt
+terratest
 ```
 
 ### Configuration
